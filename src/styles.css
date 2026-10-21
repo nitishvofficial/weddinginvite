@@ -5,17 +5,11 @@
 @custom-variant dark (&:is(.dark *));
 
 /*
- * Design system definition.
+ * Vellanki's Wedding Invitation design system.
  *
- * The @theme inline block maps CSS custom properties to Tailwind utility
- * classes (e.g. --color-primary -> bg-primary, text-primary).
- *
- * The :root and .dark blocks define the actual color values using oklch.
- * All colors MUST use oklch format.
- *
- * To add a new semantic color:
- * 1. Add the variable to :root (light value) and .dark (dark value)
- * 2. Register it in @theme inline as --color-<name>: var(--<name>)
+ * Palette: powder blue / peach pastel sunset, warm ivory & cream,
+ * muted sage, antique burgundy for the couple's names, restrained
+ * champagne gold accents. All colors are oklch tokens.
  */
 
 @theme inline {
@@ -45,91 +39,84 @@
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
-  --color-ring-offset-background: var(--background);
-  --color-chart-1: var(--chart-1);
-  --color-chart-2: var(--chart-2);
-  --color-chart-3: var(--chart-3);
-  --color-chart-4: var(--chart-4);
-  --color-chart-5: var(--chart-5);
-  --color-sidebar: var(--sidebar);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-ring: var(--sidebar-ring);
+
+  /* Wedding palette */
+  --color-ivory: var(--ivory);
+  --color-cream: var(--cream);
+  --color-burgundy: var(--burgundy);
+  --color-burgundy-deep: var(--burgundy-deep);
+  --color-sage: var(--sage);
+  --color-sage-deep: var(--sage-deep);
+  --color-champagne: var(--champagne);
+  --color-champagne-deep: var(--champagne-deep);
+  --color-blush: var(--blush);
+  --color-peach: var(--peach);
+  --color-skyblue: var(--skyblue);
+  --color-ink: var(--ink);
+
+  /* Typography */
+  --font-serif: "Cormorant Garamond", "Georgia", serif;
+  --font-script: "Great Vibes", "Snell Roundhand", cursive;
+  --font-caps: "Cinzel", "Cormorant Garamond", serif;
 }
 
 :root {
   --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.129 0.042 264.695);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.129 0.042 264.695);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.129 0.042 264.695);
-  --primary: oklch(0.208 0.042 265.755);
-  --primary-foreground: oklch(0.984 0.003 247.858);
-  --secondary: oklch(0.968 0.007 247.896);
-  --secondary-foreground: oklch(0.208 0.042 265.755);
-  --muted: oklch(0.968 0.007 247.896);
-  --muted-foreground: oklch(0.554 0.046 257.417);
-  --accent: oklch(0.968 0.007 247.896);
-  --accent-foreground: oklch(0.208 0.042 265.755);
+  --background: oklch(0.976 0.014 89);
+  --foreground: oklch(0.34 0.055 22);
+  --card: oklch(0.989 0.009 89);
+  --card-foreground: oklch(0.34 0.055 22);
+  --popover: oklch(0.989 0.009 89);
+  --popover-foreground: oklch(0.34 0.055 22);
+  --primary: oklch(0.435 0.093 20);
+  --primary-foreground: oklch(0.976 0.014 89);
+  --secondary: oklch(0.945 0.018 85);
+  --secondary-foreground: oklch(0.38 0.06 22);
+  --muted: oklch(0.945 0.018 85);
+  --muted-foreground: oklch(0.52 0.045 30);
+  --accent: oklch(0.955 0.022 60);
+  --accent-foreground: oklch(0.38 0.06 22);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(0.929 0.013 255.508);
-  --input: oklch(0.929 0.013 255.508);
-  --ring: oklch(0.704 0.04 256.788);
-  --chart-1: oklch(0.646 0.222 41.116);
-  --chart-2: oklch(0.6 0.118 184.704);
-  --chart-3: oklch(0.398 0.07 227.392);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
-  --sidebar: oklch(0.984 0.003 247.858);
-  --sidebar-foreground: oklch(0.129 0.042 264.695);
-  --sidebar-primary: oklch(0.208 0.042 265.755);
-  --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-accent: oklch(0.968 0.007 247.896);
-  --sidebar-accent-foreground: oklch(0.208 0.042 265.755);
-  --sidebar-border: oklch(0.929 0.013 255.508);
-  --sidebar-ring: oklch(0.704 0.04 256.788);
+  --border: oklch(0.88 0.03 70);
+  --input: oklch(0.88 0.03 70);
+  --ring: oklch(0.72 0.07 75);
+
+  /* Wedding palette */
+  --ivory: oklch(0.976 0.014 89);
+  --cream: oklch(0.962 0.024 82);
+  --burgundy: oklch(0.435 0.093 20);
+  --burgundy-deep: oklch(0.335 0.075 18);
+  --sage: oklch(0.68 0.05 130);
+  --sage-deep: oklch(0.45 0.055 130);
+  --champagne: oklch(0.83 0.075 85);
+  --champagne-deep: oklch(0.66 0.08 78);
+  --blush: oklch(0.89 0.05 20);
+  --peach: oklch(0.9 0.055 55);
+  --skyblue: oklch(0.9 0.035 240);
+  --ink: oklch(0.34 0.055 22);
 }
 
 .dark {
-  --background: oklch(0.129 0.042 264.695);
-  --foreground: oklch(0.984 0.003 247.858);
-  --card: oklch(0.208 0.042 265.755);
-  --card-foreground: oklch(0.984 0.003 247.858);
-  --popover: oklch(0.208 0.042 265.755);
-  --popover-foreground: oklch(0.984 0.003 247.858);
-  --primary: oklch(0.929 0.013 255.508);
-  --primary-foreground: oklch(0.208 0.042 265.755);
-  --secondary: oklch(0.279 0.041 260.031);
-  --secondary-foreground: oklch(0.984 0.003 247.858);
-  --muted: oklch(0.279 0.041 260.031);
-  --muted-foreground: oklch(0.704 0.04 256.788);
-  --accent: oklch(0.279 0.041 260.031);
-  --accent-foreground: oklch(0.984 0.003 247.858);
+  --background: oklch(0.24 0.03 30);
+  --foreground: oklch(0.95 0.02 85);
+  --card: oklch(0.28 0.035 30);
+  --card-foreground: oklch(0.95 0.02 85);
+  --popover: oklch(0.28 0.035 30);
+  --popover-foreground: oklch(0.95 0.02 85);
+  --primary: oklch(0.83 0.075 85);
+  --primary-foreground: oklch(0.24 0.03 30);
+  --secondary: oklch(0.32 0.04 30);
+  --secondary-foreground: oklch(0.95 0.02 85);
+  --muted: oklch(0.32 0.04 30);
+  --muted-foreground: oklch(0.75 0.03 70);
+  --accent: oklch(0.36 0.04 35);
+  --accent-foreground: oklch(0.95 0.02 85);
   --destructive: oklch(0.704 0.191 22.216);
   --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.551 0.027 264.364);
-  --chart-1: oklch(0.488 0.243 264.376);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.208 0.042 265.755);
-  --sidebar-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-accent: oklch(0.279 0.041 260.031);
-  --sidebar-accent-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.551 0.027 264.364);
+  --border: oklch(1 0 0 / 12%);
+  --input: oklch(1 0 0 / 16%);
+  --ring: oklch(0.6 0.06 60);
 }
 
 @layer base {
@@ -137,8 +124,89 @@
     border-color: var(--color-border);
   }
 
+  html,
+  body {
+    height: 100%;
+    overscroll-behavior: none;
+  }
+
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
+    font-family: var(--font-serif);
+    -webkit-font-smoothing: antialiased;
   }
+
+  ::selection {
+    background-color: color-mix(in oklab, var(--champagne) 60%, transparent);
+    color: var(--burgundy-deep);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--champagne-deep);
+    outline-offset: 3px;
+  }
+}
+
+/* ---------- Scene helpers ---------- */
+
+/* Soft veil over illustration skies so text stays readable */
+.wedding-overlay-sky {
+  background: linear-gradient(
+    to bottom,
+    color-mix(in oklab, var(--ivory) 42%, transparent) 0%,
+    color-mix(in oklab, var(--ivory) 18%, transparent) 32%,
+    transparent 55%,
+    color-mix(in oklab, var(--burgundy-deep) 18%, transparent) 100%
+  );
+}
+
+.wedding-overlay-cream {
+  background: linear-gradient(
+    to bottom,
+    color-mix(in oklab, var(--cream) 30%, transparent) 0%,
+    transparent 30%,
+    color-mix(in oklab, var(--cream) 25%, transparent) 100%
+  );
+}
+
+/* Soft rise reveal for text blocks */
+.reveal-rise {
+  opacity: 0;
+  transform: translateY(26px);
+  animation: reveal-rise 1.1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes reveal-rise {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal-rise {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Names set in burgundy script with a whisper of warmth */
+.script-name {
+  font-family: var(--font-script);
+  color: var(--burgundy);
+  text-shadow:
+    0 1px 0 color-mix(in oklab, var(--ivory) 55%, transparent),
+    0 6px 24px color-mix(in oklab, var(--ivory) 65%, transparent);
+}
+
+.hairline {
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    color-mix(in oklab, var(--champagne-deep) 65%, transparent),
+    transparent
+  );
 }
