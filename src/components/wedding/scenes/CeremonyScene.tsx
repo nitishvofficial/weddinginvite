@@ -1,4 +1,6 @@
 import { FadeUp, QrCard, SceneFrame, VenueButton } from "@/components/wedding/ui";
+import { AddToCalendarButton } from "@/components/wedding/AddToCalendarButton";
+import { CEREMONY_EVENT } from "@/utils/calendar";
 import { wedding } from "@/config/wedding";
 import ceremonyImg from "@/assets/scene-ceremony.jpg";
 
@@ -53,11 +55,18 @@ export function CeremonyScene() {
 
         <FadeUp
           delay={0.75}
-          className="mt-9 flex flex-col items-center gap-6 sm:flex-row sm:items-center sm:gap-8"
+          className="mt-9 flex flex-col items-center gap-4 sm:flex-row sm:items-center sm:justify-center sm:gap-6"
         >
-          <VenueButton href={ceremony.mapsUrl} ariaLabel="View church location on Google Maps">
-            View Church Location
-          </VenueButton>
+          <div className="flex flex-col items-center gap-3 sm:flex-row sm:gap-4">
+            <VenueButton href={ceremony.mapsUrl} ariaLabel="View church location on Google Maps">
+              View Church Location
+            </VenueButton>
+            <AddToCalendarButton
+              event={CEREMONY_EVENT}
+              label="Add Ceremony to Calendar"
+              filename="wedding-ceremony.ics"
+            />
+          </div>
           <QrCard
             src={ceremony.qrImage}
             caption="Scan for Church Location"

@@ -8,6 +8,7 @@ import { CeremonyScene } from "@/components/wedding/scenes/CeremonyScene";
 import { ArrivalScene } from "@/components/wedding/scenes/ArrivalScene";
 import { ReceptionScene } from "@/components/wedding/scenes/ReceptionScene";
 import { FinaleScene } from "@/components/wedding/scenes/FinaleScene";
+import { PetalsOverlay } from "@/components/wedding/PetalsOverlay";
 import { wedding } from "@/config/wedding";
 
 import coverImg from "@/assets/scene-church-cover.jpg";
@@ -238,6 +239,7 @@ export function InvitationExperience() {
 
   return (
     <div className="fixed inset-0 overflow-hidden bg-background text-foreground">
+      <PetalsOverlay />
       <AnimatePresence mode="wait">
         <motion.main
           key={scene.id}

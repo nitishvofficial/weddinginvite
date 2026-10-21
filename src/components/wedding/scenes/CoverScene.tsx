@@ -1,4 +1,5 @@
 import { FadeUp, SceneFrame, VenueButton } from "@/components/wedding/ui";
+import { WeddingCountdown } from "@/components/wedding/WeddingCountdown";
 import { wedding } from "@/config/wedding";
 import coverImg from "@/assets/scene-church-cover.jpg";
 
@@ -28,7 +29,7 @@ export function CoverScene({ onOpen }: { onOpen: () => void }) {
           </FadeUp>
         </div>
 
-        <FadeUp delay={0.75} className="mt-16 max-w-md">
+        <FadeUp delay={0.75} className="mt-12 max-w-md">
           <p className="font-serif text-[clamp(1.1rem,2.8vw,1.4rem)] italic text-burgundy-deep">
             &ldquo;{wedding.bibleVerse}&rdquo;
           </p>
@@ -37,10 +38,13 @@ export function CoverScene({ onOpen }: { onOpen: () => void }) {
           </p>
         </FadeUp>
 
-        <FadeUp delay={1.05} className="mt-auto">
-          <VenueButton onClick={onOpen} ariaLabel="Open the invitation">
-            Open Invitation
-          </VenueButton>
+        <FadeUp delay={1.05} className="mt-auto flex flex-col items-center">
+          <WeddingCountdown />
+          <div className="mt-6">
+            <VenueButton onClick={onOpen} ariaLabel="Open the invitation">
+              Open Invitation
+            </VenueButton>
+          </div>
           <p className="mt-4 font-serif text-xs italic text-burgundy-deep/70">
             An illustrated invitation in seven scenes
           </p>

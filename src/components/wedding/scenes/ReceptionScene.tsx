@@ -1,4 +1,6 @@
 import { FadeUp, QrCard, SceneFrame, VenueButton } from "@/components/wedding/ui";
+import { AddToCalendarButton } from "@/components/wedding/AddToCalendarButton";
+import { LUNCH_EVENT } from "@/utils/calendar";
 import { wedding } from "@/config/wedding";
 import receptionImg from "@/assets/scene-reception-panel.jpg";
 
@@ -33,14 +35,21 @@ export function ReceptionScene() {
 
         <FadeUp
           delay={0.7}
-          className="mt-10 flex flex-col items-center gap-7 sm:flex-row sm:items-center sm:gap-10"
+          className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:items-center sm:justify-center sm:gap-6"
         >
-          <VenueButton
-            href={lunch.mapsUrl}
-            ariaLabel="Get directions to the lunch venue on Google Maps"
-          >
-            Get Directions
-          </VenueButton>
+          <div className="flex flex-col items-center gap-3 sm:flex-row sm:gap-4">
+            <VenueButton
+              href={lunch.mapsUrl}
+              ariaLabel="Get directions to the lunch venue on Google Maps"
+            >
+              Get Directions
+            </VenueButton>
+            <AddToCalendarButton
+              event={LUNCH_EVENT}
+              label="Add Lunch to Calendar"
+              filename="wedding-lunch.ics"
+            />
+          </div>
           <QrCard src={lunch.qrImage} caption="Scan for Lunch Location" mapsUrl={lunch.mapsUrl} />
         </FadeUp>
       </div>
