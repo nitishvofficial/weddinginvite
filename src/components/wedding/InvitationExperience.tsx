@@ -18,6 +18,8 @@ import arrivalImg from "@/assets/scene-arrival.jpg";
 import receptionImg from "@/assets/scene-reception-panel.jpg";
 import finaleImg from "@/assets/scene-finale.jpg";
 
+const BGM_SRC = "/assets/wedding-bgm.mp3";
+
 const SCENE_IMAGES = [
   coverImg,
   coupleImg,
@@ -30,10 +32,22 @@ const SCENE_IMAGES = [
 
 interface SceneCtx {
   go: (index: number) => void;
+  startAudio: () => void;
 }
 
 const SCENES: { id: string; label: string; render: (ctx: SceneCtx) => React.ReactNode }[] = [
-  { id: "cover", label: "Opening", render: (ctx) => <CoverScene onOpen={() => ctx.go(1)} /> },
+  {
+    id: "cover",
+    label: "Opening",
+    render: (ctx) => (
+      <CoverScene
+        onOpen={() => {
+          ctx.startAudio();
+          ctx.go(1);
+        }}
+      />
+    ),
+  },
   { id: "couple", label: "The Couple", render: () => <CoupleScene /> },
   { id: "formal", label: "The Invitation", render: () => <FormalScene /> },
   { id: "ceremony", label: "Wedding Ceremony", render: () => <CeremonyScene /> },
@@ -50,19 +64,64 @@ const TRANSITION_LOCK_MS = 1200;
 
 export function InvitationExperience() {
   const [index, setIndex] = useState(0);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
   const reduced = useReducedMotion();
   const lockUntilRef = useRef(0);
   const touchStartYRef = useRef<number | null>(null);
   const touchStartScrollRef = useRef(0);
   const touchConsumedRef = useRef(false);
 
+  /* Initialize looped background music and trigger automatic playback */
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const audio = new Audio(BGM_SRC);
+    audio.loop = true;
+    audio.volume = 0.5;
+    audioRef.current = audio;
+
+    // Attempt immediate autoplay on mount
+    audio.play().catch(() => {
+      // Browser prevented autoplay before interaction
+    });
+
+    // Start on any initial user interaction if autoplay was initially restricted
+    const handleInteraction = () => {
+      if (audio.paused) {
+        audio.play().catch(() => {});
+      }
+      window.removeEventListener("pointerdown", handleInteraction);
+      window.removeEventListener("touchstart", handleInteraction);
+      window.removeEventListener("keydown", handleInteraction);
+      window.removeEventListener("wheel", handleInteraction);
+    };
+
+    window.addEventListener("pointerdown", handleInteraction, { passive: true });
+    window.addEventListener("touchstart", handleInteraction, { passive: true });
+    window.addEventListener("keydown", handleInteraction);
+    window.addEventListener("wheel", handleInteraction, { passive: true });
+
+    return () => {
+      window.removeEventListener("pointerdown", handleInteraction);
+      window.removeEventListener("touchstart", handleInteraction);
+      window.removeEventListener("keydown", handleInteraction);
+      window.removeEventListener("wheel", handleInteraction);
+      audio.pause();
+      audioRef.current = null;
+    };
+  }, []);
+
+  const startAudio = useCallback(() => {
+    if (audioRef.current && audioRef.current.paused) {
+      audioRef.current.play().catch(() => {});
+    }
+  }, []);
+
   const go = useCallback(
     (to: number) => {
       const clamped = Math.max(0, Math.min(SCENES.length - 1, to));
       const now = performance.now();
       if (now < lockUntilRef.current || clamped === index) return;
-      lockUntilRef.current =
-        now + (reduced ? 250 : TRANSITION_LOCK_MS);
+      lockUntilRef.current = now + (reduced ? 250 : TRANSITION_LOCK_MS);
       setIndex(clamped);
     },
     [index, reduced],
@@ -92,8 +151,7 @@ export function InvitationExperience() {
       if (scrollable && scrollable.scrollHeight > scrollable.clientHeight) {
         const atTop = scrollable.scrollTop <= 2;
         const atBottom =
-          scrollable.scrollTop + scrollable.clientHeight >=
-          scrollable.scrollHeight - 2;
+          scrollable.scrollTop + scrollable.clientHeight >= scrollable.scrollHeight - 2;
         if (event.deltaY > 0 && !atBottom) return;
         if (event.deltaY < 0 && !atTop) return;
       }
@@ -107,7 +165,9 @@ export function InvitationExperience() {
   /* Touch swipe, aware of inner scrolling. */
   useEffect(() => {
     const onStart = (event: TouchEvent) => {
-      touchStartYRef.current = event.touches[0].clientY;
+      const touch = event.touches[0];
+      if (!touch) return;
+      touchStartYRef.current = touch.clientY;
       touchConsumedRef.current = false;
       const scrollable = (event.target as HTMLElement | null)?.closest(
         "[data-scrollable]",
@@ -129,7 +189,9 @@ export function InvitationExperience() {
     };
     const onEnd = (event: TouchEvent) => {
       if (touchStartYRef.current === null) return;
-      const deltaY = touchStartYRef.current - event.changedTouches[0].clientY;
+      const touch = event.changedTouches[0];
+      if (!touch) return;
+      const deltaY = touchStartYRef.current - touch.clientY;
       touchStartYRef.current = null;
       if (touchConsumedRef.current || Math.abs(deltaY) < 56) return;
       if (deltaY > 0) goNext();
@@ -188,7 +250,7 @@ export function InvitationExperience() {
           }}
           className="absolute inset-0"
         >
-          {scene.render({ go })}
+          {scene.render({ go, startAudio })}
         </motion.main>
       </AnimatePresence>
 

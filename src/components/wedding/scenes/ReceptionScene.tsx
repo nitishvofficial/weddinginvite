@@ -31,8 +31,14 @@ export function ReceptionScene() {
           </p>
         </FadeUp>
 
-        <FadeUp delay={0.7} className="mt-10 flex flex-col items-center gap-7 sm:flex-row sm:items-center sm:gap-10">
-          <VenueButton href={lunch.mapsUrl} ariaLabel="Get directions to the lunch venue on Google Maps">
+        <FadeUp
+          delay={0.7}
+          className="mt-10 flex flex-col items-center gap-7 sm:flex-row sm:items-center sm:gap-10"
+        >
+          <VenueButton
+            href={lunch.mapsUrl}
+            ariaLabel="Get directions to the lunch venue on Google Maps"
+          >
             Get Directions
           </VenueButton>
           <QrCard src={lunch.qrImage} caption="Scan for Lunch Location" mapsUrl={lunch.mapsUrl} />

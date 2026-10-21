@@ -18,9 +18,7 @@ describe("wedding details", () => {
   });
 
   it("keeps the ceremony details and officiating clergy", () => {
-    expect(wedding.ceremony.dateLine).toContain(
-      "22nd November 2026 at 10:00 a.m.",
-    );
+    expect(wedding.ceremony.dateLine).toContain("22nd November 2026 at 10:00 a.m.");
     expect(wedding.ceremony.venueName).toBe("Holy Family Church, Nirmala School");
     expect(wedding.ceremony.venueAddress).toContain("Vadlapudi, Kurmanapalem, Visakhapatnam");
     const names = wedding.ceremony.solemnizers.map((s) => s.name);
@@ -48,10 +46,8 @@ describe("wedding details", () => {
     expect(wedding.lunch.mapsUrl).toContain("530012");
   });
 
-  it("keeps the two QR codes distinct, church QR pending on the original", () => {
-    // The original printed church QR must be used unchanged; until it is
-    // supplied the card stays pending rather than a recreated code.
-    expect(wedding.ceremony.qrImage).toBeNull();
+  it("keeps the two QR codes distinct with verified asset paths", () => {
+    expect(wedding.ceremony.qrImage).toBe("/assets/church-venue-qr.png");
     expect(wedding.lunch.qrImage).toBe("/assets/lunch-venue-qr.png");
     expect(wedding.lunch.qrImage).not.toBe(wedding.ceremony.qrImage);
   });

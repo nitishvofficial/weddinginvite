@@ -12,7 +12,7 @@ interface SceneFrameProps {
   eager?: boolean;
   /** Very slow, gentle drift — only for hero storytelling scenes. */
   kenburns?: boolean;
-  overlay?: "sky" | "cream" | "none";
+  overlay?: "sky" | "cream" | "ceremony" | "none";
   children: ReactNode;
 }
 
@@ -30,9 +30,7 @@ export function SceneFrame({
     <section className="relative h-dvh w-full overflow-hidden bg-background">
       <motion.div
         className="absolute inset-0 will-change-transform"
-        animate={
-          kenburns && !reduced ? { scale: [1.03, 1.09, 1.03] } : { scale: 1 }
-        }
+        animate={kenburns && !reduced ? { scale: [1.03, 1.09, 1.03] } : { scale: 1 }}
         transition={{ duration: 42, repeat: Infinity, ease: "easeInOut" }}
       >
         <img
@@ -48,7 +46,11 @@ export function SceneFrame({
         <div
           aria-hidden="true"
           className={`absolute inset-0 ${
-            overlay === "cream" ? "wedding-overlay-cream" : "wedding-overlay-sky"
+            overlay === "cream"
+              ? "wedding-overlay-cream"
+              : overlay === "ceremony"
+                ? "wedding-overlay-ceremony"
+                : "wedding-overlay-sky"
           }`}
         />
       )}

@@ -1,6 +1,6 @@
-# Pixel Perfect Snapshot
+# Wedding Invitation — Bala Maria Bhavya Sree & Nova Yashwanth Naidu
 
-Implement exactly the screenshot and nothing else
+Interactive luxury wedding invitation experience with continuous looping background music, venue direction QR codes, and Netlify deployment configuration.
 
 This project was built with [Lovable](https://lovable.dev).
 

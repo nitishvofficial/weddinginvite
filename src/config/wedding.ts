@@ -52,20 +52,16 @@ export const wedding = {
     ],
     mapsUrl: mapsSearchUrl(CHURCH_MAPS_QUERY),
     /**
-     * The original church-location QR code from the printed invitation must
-     * be used unchanged. Drop the original image into
-     * public/assets/church-venue-qr.png and set this path to enable it.
-     * Until then the card shows a pending placeholder.
+     * The original church-location QR code from the printed invitation.
      */
-    qrImage: null as string | null,
+    qrImage: "/assets/church-venue-qr.png",
   },
 
   lunch: {
     heading: "Lunch",
     dateLine: "On Sunday, 22nd November 2026 from 12:30 p.m. onwards",
     venueName: "Sobha Square",
-    venueAddress:
-      "Hero Honda Showroom, D-Mart Road, Srinagar, NH-16, Gajuwaka, Visakhapatnam",
+    venueAddress: "Hero Honda Showroom, D-Mart Road, Srinagar, NH-16, Gajuwaka, Visakhapatnam",
     mapsUrl: mapsSearchUrl(LUNCH_MAPS_QUERY),
     /** Newly generated QR pointing to the verified lunch venue. */
     qrImage: "/assets/lunch-venue-qr.png",

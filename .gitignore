@@ -20,6 +20,12 @@ dist-ssr
 .wrangler/
 .dev.vars
 
+# Netlify
+.netlify/
+
+# Root temporary audio upload
+mixkit-*.mp3
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

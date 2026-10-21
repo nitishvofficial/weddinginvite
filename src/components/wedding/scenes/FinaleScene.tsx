@@ -25,9 +25,7 @@ export function FinaleScene({ onRevisit }: { onRevisit: () => void }) {
         </FadeUp>
 
         <FadeUp delay={0.8}>
-          <p className="script-name my-1 text-[clamp(1.6rem,4.5vw,2.6rem)] leading-none">
-            &amp;
-          </p>
+          <p className="script-name my-1 text-[clamp(1.6rem,4.5vw,2.6rem)] leading-none">&amp;</p>
         </FadeUp>
 
         <FadeUp delay={1}>

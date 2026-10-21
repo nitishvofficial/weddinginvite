@@ -170,6 +170,27 @@
   );
 }
 
+/* Luminous veil over church ceremony so text floats clearly without a card/box */
+.wedding-overlay-ceremony {
+  background:
+    radial-gradient(
+      ellipse 85% 75% at 50% 48%,
+      color-mix(in oklab, var(--ivory) 88%, transparent) 0%,
+      color-mix(in oklab, var(--ivory) 80%, transparent) 40%,
+      color-mix(in oklab, var(--ivory) 60%, transparent) 70%,
+      color-mix(in oklab, var(--ivory) 30%, transparent) 100%
+    ),
+    linear-gradient(
+      to bottom,
+      color-mix(in oklab, var(--ivory) 50%, transparent) 0%,
+      transparent 20%,
+      transparent 80%,
+      color-mix(in oklab, var(--ivory) 65%, transparent) 100%
+    );
+  backdrop-filter: blur(2.5px);
+  -webkit-backdrop-filter: blur(2.5px);
+}
+
 /* Soft rise reveal for text blocks */
 .reveal-rise {
   opacity: 0;
