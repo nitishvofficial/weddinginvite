@@ -41,7 +41,7 @@ export function CeremonyScene() {
                 <p className="font-serif text-[clamp(1.02rem,2.5vw,1.25rem)] text-burgundy-deep">
                   {s.name}
                 </p>
-                {s.note && (
+                {"note" in s && s.note && (
                   <p className="mt-0.5 font-serif text-[0.85rem] italic text-burgundy-deep/75">
                     {s.note}
                   </p>

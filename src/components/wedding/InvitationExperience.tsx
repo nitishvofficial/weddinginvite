@@ -171,7 +171,7 @@ export function InvitationExperience() {
     return () => window.removeEventListener("keydown", onKey);
   }, [go, goNext, goPrev]);
 
-  const scene = SCENES[index];
+  const scene = SCENES[index] ?? SCENES[0]!;
   const started = index > 0;
 
   return (
@@ -224,7 +224,7 @@ export function InvitationExperience() {
         <motion.button
           type="button"
           onClick={goNext}
-          aria-label={`Next scene: ${SCENES[index + 1].label}`}
+          aria-label={`Next scene: ${SCENES[index + 1]?.label ?? ""}`}
           className="fixed bottom-6 left-1/2 z-20 -translate-x-1/2 rounded-full p-3 text-burgundy-deep/80 backdrop-blur-sm transition hover:text-burgundy"
           animate={reduced ? {} : { y: [0, 8, 0] }}
           transition={{ duration: 2.4, repeat: Infinity, ease: "easeInOut" }}
