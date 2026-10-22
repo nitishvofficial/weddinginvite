@@ -1,9 +1,9 @@
-import { FadeUp, SceneFrame, VenueButton } from "@/components/wedding/ui";
+import { FadeUp, SceneFrame } from "@/components/wedding/ui";
 import { SaveTheDateCalendar } from "@/components/wedding/SaveTheDateCalendar";
 import { wedding } from "@/config/wedding";
 import finaleImg from "@/assets/scene-finale.jpg";
 
-export function FinaleScene({ onRevisit }: { onRevisit: () => void }) {
+export function FinaleScene({ onRevisit }: { onRevisit?: () => void } = {}) {
   return (
     <SceneFrame
       image={finaleImg}
@@ -37,12 +37,6 @@ export function FinaleScene({ onRevisit }: { onRevisit: () => void }) {
 
         <FadeUp delay={1.2} className="mt-9">
           <SaveTheDateCalendar />
-        </FadeUp>
-
-        <FadeUp delay={1.45} className="mt-8">
-          <VenueButton onClick={onRevisit} ariaLabel="Return to the opening scene">
-            Revisit Invitation
-          </VenueButton>
         </FadeUp>
       </div>
     </SceneFrame>

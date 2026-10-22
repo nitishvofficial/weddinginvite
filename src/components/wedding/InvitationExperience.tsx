@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
-import { ChevronDown } from "lucide-react";
+import { ChevronLeft, ChevronRight, RotateCcw } from "lucide-react";
 import { CoverScene } from "@/components/wedding/scenes/CoverScene";
 import { CoupleScene } from "@/components/wedding/scenes/CoupleScene";
 import { FormalScene } from "@/components/wedding/scenes/FormalScene";
@@ -51,13 +51,13 @@ const SCENES: { id: string; label: string; render: (ctx: SceneCtx) => React.Reac
   },
   { id: "couple", label: "The Couple", render: () => <CoupleScene /> },
   { id: "formal", label: "The Invitation", render: () => <FormalScene /> },
-  { id: "ceremony", label: "Wedding Ceremony", render: () => <CeremonyScene /> },
-  { id: "arrival", label: "The Arrival", render: () => <ArrivalScene /> },
-  { id: "reception", label: "Lunch", render: () => <ReceptionScene /> },
+  { id: "ceremony", label: "Ceremony", render: () => <CeremonyScene /> },
+  { id: "arrival", label: "The Journey", render: () => <ArrivalScene /> },
+  { id: "reception", label: "Lunch Venue", render: () => <ReceptionScene /> },
   {
     id: "finale",
-    label: "Best Wishes",
-    render: (ctx) => <FinaleScene onRevisit={() => ctx.go(0)} />,
+    label: "Save Date",
+    render: () => <FinaleScene />,
   },
 ];
 
@@ -283,18 +283,63 @@ export function InvitationExperience() {
         </nav>
       )}
 
-      {/* Next cue */}
-      {index < SCENES.length - 1 && (
-        <motion.button
-          type="button"
-          onClick={goNext}
-          aria-label={`Next scene: ${SCENES[index + 1]?.label ?? ""}`}
-          className="fixed bottom-6 left-1/2 z-20 -translate-x-1/2 rounded-full p-3 text-burgundy-deep/80 backdrop-blur-sm transition hover:text-burgundy"
-          animate={reduced ? {} : { y: [0, 8, 0] }}
-          transition={{ duration: 2.4, repeat: Infinity, ease: "easeInOut" }}
+      {/* Floating Intuitive Bottom Navigation Bar */}
+      {started && (
+        <motion.nav
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.35, ease: "easeOut" }}
+          aria-label="Scene navigation"
+          className="fixed bottom-4 left-1/2 z-30 flex -translate-x-1/2 items-center gap-1.5 rounded-full border border-champagne-deep/45 bg-ivory/95 px-2.5 py-1.5 shadow-[0_12px_32px_-8px_rgba(42,22,27,0.38)] backdrop-blur-md sm:gap-2 sm:px-3"
         >
-          <ChevronDown aria-hidden="true" className="h-7 w-7" />
-        </motion.button>
+          {/* Back button */}
+          <button
+            type="button"
+            onClick={goPrev}
+            aria-label="Go to previous scene"
+            className="flex items-center gap-1 rounded-full px-2.5 py-1 text-burgundy-deep/80 transition-all hover:bg-champagne/25 hover:text-burgundy active:scale-95"
+          >
+            <ChevronLeft className="h-4 w-4" aria-hidden="true" />
+            <span className="font-caps text-[0.66rem] font-medium uppercase tracking-wider">
+              Back
+            </span>
+          </button>
+
+          {/* Scene progress badge */}
+          <span
+            aria-hidden="true"
+            className="select-none rounded-full bg-champagne-deep/15 px-2.5 py-0.5 font-serif text-[0.72rem] italic text-burgundy"
+          >
+            {index + 1} / {SCENES.length}
+          </span>
+
+          {/* Next scene button or Restart button */}
+          {index < SCENES.length - 1 ? (
+            <button
+              type="button"
+              onClick={goNext}
+              aria-label={`Next scene: ${SCENES[index + 1]?.label ?? ""}`}
+              className="flex items-center gap-1.5 rounded-full bg-burgundy px-3.5 py-1 text-ivory shadow-sm transition-all hover:bg-burgundy-deep active:scale-95"
+            >
+              <span className="font-caps text-[0.68rem] font-semibold uppercase tracking-[0.14em] whitespace-nowrap">
+                Next: {SCENES[index + 1]?.label}
+              </span>
+              <ChevronRight className="h-4 w-4" aria-hidden="true" />
+            </button>
+          ) : (
+            <button
+              type="button"
+              onClick={() => go(0)}
+              aria-label="Revisit invitation from beginning"
+              className="flex items-center gap-1.5 rounded-full bg-burgundy px-3.5 py-1 text-ivory shadow-sm transition-all hover:bg-burgundy-deep active:scale-95"
+            >
+              <RotateCcw className="h-3.5 w-3.5" aria-hidden="true" />
+              <span className="font-caps text-[0.68rem] font-semibold uppercase tracking-[0.14em] whitespace-nowrap">
+                Start Over
+              </span>
+            </button>
+          )}
+        </motion.nav>
       )}
 
       <p aria-live="polite" className="sr-only">
