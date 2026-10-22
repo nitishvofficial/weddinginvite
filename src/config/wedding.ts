@@ -20,7 +20,7 @@ export const mapsSearchUrl = (query: string) =>
 export const wedding = {
   family: "Vellanki's",
   bride: "Bala Maria Bhavya Sree",
-  groom: "Nova Yashwanth Naidu",
+  groom: "Nova Yaswanth Naidu",
   monogram: { left: "B", right: "N" },
 
   dateLine: "Sunday, 22 November 2026",

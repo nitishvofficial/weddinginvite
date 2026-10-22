@@ -4,7 +4,7 @@ import { wedding } from "@/config/wedding";
 describe("wedding details", () => {
   it("carries the couple's names exactly", () => {
     expect(wedding.bride).toBe("Bala Maria Bhavya Sree");
-    expect(wedding.groom).toBe("Nova Yashwanth Naidu");
+    expect(wedding.groom).toBe("Nova Yaswanth Naidu");
   });
 
   it("states the wedding date of Sunday, 22 November 2026", () => {

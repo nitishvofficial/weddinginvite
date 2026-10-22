@@ -7,23 +7,23 @@ export interface CalendarEvent {
 }
 
 export const CEREMONY_EVENT: CalendarEvent = {
-  title: "Holy Matrimony: Maria & Yashwanth",
-  description: "Wedding Solemnization of Bala Maria Bhavya Sree & Nova Yashwanth Naidu at Holy Family Catholic Church.",
+  title: "Holy Matrimony: Maria & Yaswanth",
+  description: "Wedding Solemnization of Bala Maria Bhavya Sree & Nova Yaswanth Naidu at Holy Family Catholic Church.",
   location: "Holy Family Catholic Church, Kurmannapalem, Vadlapudi, Visakhapatnam 530046",
   startIsoUtc: "20261122T043000Z", // 10:00 AM IST
   endIsoUtc: "20261122T063000Z",   // 12:00 PM IST
 };
 
 export const LUNCH_EVENT: CalendarEvent = {
-  title: "Wedding Lunch: Maria & Yashwanth",
-  description: "Wedding Lunch & Celebration for Bala Maria Bhavya Sree & Nova Yashwanth Naidu at Sobha Square.",
+  title: "Wedding Lunch: Maria & Yaswanth",
+  description: "Wedding Lunch & Celebration for Bala Maria Bhavya Sree & Nova Yaswanth Naidu at Sobha Square.",
   location: "Sobha Square, 50 Feet Rd, Viswesyaraya Nagar, Auto Nagar, Visakhapatnam 530012",
   startIsoUtc: "20261122T070000Z", // 12:30 PM IST
   endIsoUtc: "20261122T103000Z",   // 4:00 PM IST
 };
 
 export const FULL_WEDDING_EVENT: CalendarEvent = {
-  title: "Wedding of Bala Maria Bhavya Sree & Nova Yashwanth Naidu",
+  title: "Wedding of Bala Maria Bhavya Sree & Nova Yaswanth Naidu",
   description: "Holy Matrimony (10:00 AM at Holy Family Catholic Church, Vadlapudi) followed by Wedding Lunch (12:30 PM onwards at Sobha Square).",
   location: "Holy Family Catholic Church, Kurmannapalem, Visakhapatnam",
   startIsoUtc: "20261122T043000Z", // 10:00 AM IST

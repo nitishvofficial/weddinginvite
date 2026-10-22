@@ -1,4 +1,4 @@
-# Wedding Invitation — Bala Maria Bhavya Sree & Nova Yashwanth Naidu
+# Wedding Invitation — Bala Maria Bhavya Sree & Nova Yaswanth Naidu
 
 Interactive luxury wedding invitation experience with continuous looping background music, venue direction QR codes, and Netlify deployment configuration.
 

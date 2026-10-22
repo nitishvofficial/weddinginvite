@@ -79,7 +79,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       {
-        title: "Vellanki's Wedding Invitation — Bala Maria Bhavya Sree & Nova Yashwanth Naidu",
+        title: "Vellanki's Wedding Invitation — Bala Maria Bhavya Sree & Nova Yaswanth Naidu",
       },
       {
         name: "description",
@@ -91,7 +91,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         property: "og:description",
         content:
-          "Bala Maria Bhavya Sree & Nova Yashwanth Naidu — Sunday, 22 November 2026, Visakhapatnam.",
+          "Bala Maria Bhavya Sree & Nova Yaswanth Naidu — Sunday, 22 November 2026, Visakhapatnam.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
