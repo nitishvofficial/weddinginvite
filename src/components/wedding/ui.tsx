@@ -193,12 +193,12 @@ export function Monogram({ left, right }: { left: string; right: string }) {
   return (
     <div
       aria-label={`Wedding monogram ${left} and ${right}`}
-      className="script-name flex items-baseline justify-center leading-none"
+      className="script-name flex items-center justify-center leading-none"
     >
       <span className="text-[clamp(4rem,14vw,7.5rem)]">{left}</span>
       <span
         aria-hidden="true"
-        className="mx-[0.12em] font-serif italic text-[0.34em] text-burgundy"
+        className="mx-2 font-serif italic text-[0.45em] text-burgundy/80 select-none"
       >
         &
       </span>

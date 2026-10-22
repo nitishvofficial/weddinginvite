@@ -23,7 +23,7 @@ describe("wedding details", () => {
     expect(wedding.ceremony.venueAddress).toContain("Vadlapudi, Kurmanapalem, Visakhapatnam");
     const names = wedding.ceremony.solemnizers.map((s) => s.name);
     expect(names).toContain("Rev. Fr. Jalumuru Ananda Rao");
-    expect(names).toContain("Rev. Fr. Dr. Sarisa Pratap");
+    expect(names).toContain("Rev. Fr. Dr. Sarisa Prathap");
     expect(names).toContain("and Other Priests");
   });
 

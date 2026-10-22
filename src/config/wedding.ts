@@ -45,7 +45,7 @@ export const wedding = {
     solemnizers: [
       { name: "Rev. Fr. Jalumuru Ananda Rao" },
       {
-        name: "Rev. Fr. Dr. Sarisa Pratap",
+        name: "Rev. Fr. Dr. Sarisa Prathap",
         note: "(Visakha Urban Dean, Vadlapudi Parish Priest)",
       },
       { name: "and Other Priests" },

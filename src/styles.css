@@ -56,8 +56,16 @@
 
   /* Typography */
   --font-serif: "Cormorant Garamond", "Georgia", serif;
-  --font-script: "Great Vibes", "Snell Roundhand", cursive;
+  --font-script: "Parisienne", "Great Vibes", "Snell Roundhand", cursive;
   --font-caps: "Cinzel", "Cormorant Garamond", serif;
+}
+
+@font-face {
+  font-family: "Parisienne";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/assets/parisienne.ttf") format("truetype");
 }
 
 :root {
